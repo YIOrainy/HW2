@@ -8,11 +8,11 @@ const context = canvas.getContext('2d');
 fileInput.addEventListener('change', (event) => {
 const file = event.target.files[0];
 if (file) {
-    submitButton.disabled = false; // Enable the submit button
+    submitButton.disabled = false; // Enable the submit button when an image is selected
 }
 });
 
-// Event listener for submit button click
+// Event listener for "ارسال الصورة" button click
 submitButton.addEventListener('click', (event) => {
 const file = fileInput.files[0];
 if (file) {
@@ -26,11 +26,11 @@ if (file) {
         canvas.height = img.height;
         context.drawImage(img, 0, 0);
 
-        // Perform OCR on the uploaded image
+        // Send the image to OCR for recognition
         recognizeArabicNumber(canvas.toDataURL());
     };
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file); // Convert the image file to data URL for processing
 }
 });
 
